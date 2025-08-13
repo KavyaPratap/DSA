@@ -1,3 +1,13 @@
+// logic
+
+// Start with the second element (the first element is already "sorted").
+// Compare it with the elements before it.
+// Shift the larger elements one position to the right to make space.
+// Insert the current element into its correct position.
+// Repeat this for all elements in the list.
+
+
+
 //insertion sort
 #include <stdio.h>
 
