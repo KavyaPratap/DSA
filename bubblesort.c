@@ -1,3 +1,6 @@
+//logic----iterate thriugh array......again create a loop to check two corresponding element....if arr[j>arr[j+1]...then swap them else...go to next element [i increments..]
+
+
 #include <stdio.h>
 
 void swap(int* arr, int i, int j) {
