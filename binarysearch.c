@@ -1,5 +1,11 @@
 
 //binary search without recursion
+// logic--
+//     we have a sorted array pf length n, if not sortd then sort it.
+//     we first initialize an array and mentions low and high as 0 and n-1 respectively.
+//     binary search work like this-- if array has n elements....dvide it by (low+(high-low))/2, so at to find mid...if element we are finding is > mid, ignore elemnents<key...and new low is mid+1...and vice versa
+//     so we create a while loop to iterate through array and calculate mid....and we make 3 conditions to check element...if element found ....else element not found
+
 
 #include <stdio.h>
 
