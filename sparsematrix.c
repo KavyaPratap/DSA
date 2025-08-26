@@ -1,38 +1,44 @@
-// Online C compiler to run C program online
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
-    // Write C code here
-    int i,j;
-    int arr[5][5]={
-                {1,0,2},
-                {0,9,3},
-                {5,0,0}
-                };
-int nze=0;
-for(i=0;i<5;i++){
-    for(j=0;j<5;j++){
-        if(arr[i][j]!=0){
-            nze++;
+    int row, col, i, j;
+
+    printf("Enter number of rows and columns: ");
+    scanf("%d %d", &row, &col);
+
+    int arr[row][col];
+    int nze = 0; 
+
+    printf("Enter matrix elements:\n");
+    for(i = 0; i < row; i++) {
+        for(j = 0; j < col; j++) {
+            scanf("%d", &arr[i][j]);
+            if (arr[i][j] != 0) {
+                nze++;
+            }
         }
     }
-}
-int sparse[3][nze];
-int k=0;
-for(i=0;i<3;i++){
-    for(j=0;j<nze;j++){
-      if(arr[i][j]!=0){
-          sparse[0][k]=i;
-          sparse[1][k]=j;
-          sparse[2][k]=arr[i][j];
-          k++;
-      }  
+
+
+    int sparseMatrix[nze][3];
+    int k = 0; 
+
+    for(i = 0; i < row; i++) {
+        for(j = 0; j < col; j++) {
+            if (arr[i][j] != 0) {
+                sparseMatrix[k][0] = i;    
+                sparseMatrix[k][1] = j;      
+                sparseMatrix[k][2] = arr[i][j];  
+                k++;
+            }
+        }
     }
-}
-for(i=0;i<3;i++){
-    for(j=0;j<nze;j++){
-     printf(" %d ",sparse[i][j]);
-      }  
-      printf("\n");
+
+    printf("\nSparse Matrix Representation (Row, Column, Value):\n");
+    for(i = 0; i < nze; i++) {
+        printf("%d\t%d\t%d\n", sparseMatrix[i][0], sparseMatrix[i][1], sparseMatrix[i][2]);
     }
+
+    return 0;
 }
