@@ -21,15 +21,15 @@ int main() {
     }
 
 
-    int sparseMatrix[nze][3];
+    int sparse[nze][3];
     int k = 0; 
 
     for(i = 0; i < row; i++) {
         for(j = 0; j < col; j++) {
             if (arr[i][j] != 0) {
-                sparseMatrix[k][0] = i;    
-                sparseMatrix[k][1] = j;      
-                sparseMatrix[k][2] = arr[i][j];  
+                sparse[k][0] = i;    
+                sparse[k][1] = j;      
+                sparse[k][2] = arr[i][j];  
                 k++;
             }
         }
@@ -37,7 +37,7 @@ int main() {
 
     printf("\nSparse Matrix Representation (Row, Column, Value):\n");
     for(i = 0; i < nze; i++) {
-        printf("%d\t%d\t%d\n", sparseMatrix[i][0], sparseMatrix[i][1], sparseMatrix[i][2]);
+        printf("%d\t%d\t%d\n", sparse[i][0], sparse[i][1], sparse[i][2]);
     }
 
     return 0;
