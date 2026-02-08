@@ -1,0 +1,40 @@
+/*
+Logic:
+Keep track of two variables:
+max1 → largest element
+max2 → second largest element
+Iterate through the array once:
+If current element > max1:
+max2 = max1
+max1 = arr[i]
+Else if current element > max2 and < max1:
+max2 = arr[i]
+At the end, max2 is the second largest.
+*/
+
+#include <iostream>
+#include <climits>
+using namespace std;
+
+int main() {
+    int arr[] = {6, 10, 23, 42, 145, 82, 41, 98, 112,76, 56};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    int max1 = arr[0];
+    int max2 = INT_MIN; 
+    /*INT_MIN is a preprocessor macro in C/C++ (defined in <climits>) representing the smallest possible value for a signed integer, typically -2,147,483,648 for standard 32-bit systems
+    */
+    for(int i = 1; i < n; i++){
+        if(arr[i] > max1){
+            max2 = max1;
+            max1 = arr[i];
+        }
+        else if(arr[i] > max2 && arr[i] != max1){
+            max2 = arr[i];
+        }
+    }
+    if(max2 == INT_MIN)
+        cout << "No second largest element";
+    else
+        cout << "Second largest element: " << max2;
+}
