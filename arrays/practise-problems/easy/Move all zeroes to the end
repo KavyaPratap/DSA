@@ -1,0 +1,106 @@
+/*
+Goal: Rearrange array so that all zeros are at the end, maintaining the order of non-zero elements.
+Logic (Two-pointer):
+Keep a pointer pos = 0 → indicates next position for non-zero element.
+Iterate array:
+If arr[i] != 0, move it to arr[pos] and increment pos.
+After loop, fill remaining positions with 0.
+*/
+
+#include <iostream>
+using namespace std;
+int main() {
+    int arr[] = {0, 2, 0, 3, 4, 0, 5};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int pos = 0;
+    for(int i = 0; i < n; i++){
+        if(arr[i] != 0){
+            arr[pos] = arr[i];
+            pos++;
+        }
+    }
+    for(int i = pos; i < n; i++){
+        arr[i] = 0;
+    }
+    for(int i = 0; i < n; i++) cout << arr[i] << " ";
+}
+
+
+
+
+/*Step by step solution explaination
+Step 1: Initialization
+int arr[] = {0, 2, 0, 3, 4, 0, 5};
+int n = sizeof(arr)/sizeof(arr[0]);
+int pos = 0;
+
+
+arr → the input array
+
+n → length of the array (calculated using sizeof)
+
+pos → keeps track of the next position to place a non-zero element
+
+Step 2: Move non-zero elements forward
+for(int i = 0; i < n; i++){
+    if(arr[i] != 0){
+        arr[pos] = arr[i];
+        pos++;
+    }
+}
+
+Logic:
+We iterate through the array using i.
+If arr[i] is non-zero, we move it to the index pos.
+Increment pos after placing the element.
+
+Step-by-step for your array:
+
+i	arr[i]	Action	  pos	  Array after action
+0	  0	    skip	     0	  [0, 2, 0, 3, 4, 0, 5]
+1	  2	   arr[0]=2    1	  [2, 2, 0, 3, 4, 0, 5]
+2	  0	   skip	       1	  [2, 2, 0, 3, 4, 0, 5]
+3	  3	   arr[1]=3	   2    [2, 3, 0, 3, 4, 0, 5]
+4	  4 	  arr[2]=4	 3	  [2, 3, 4, 3, 4, 0, 5]
+5	  0	    skip	     3	  [2, 3, 4, 3, 4, 0, 5]
+6	  5	    arr[3]=5	 4	  [2, 3, 4, 5, 4, 0, 5]
+
+After this loop, all non-zero elements are at the front, and pos points to the first index that should be zero.
+
+Step 3: Fill remaining positions with 0
+for(int i = pos; i < n; i++){
+    arr[i] = 0;
+}
+
+
+Starting from pos, set every remaining element to zero.
+
+Continuing the previous table:
+i	Action	Array
+4	arr[4]=0	[2, 3, 4, 5, 0, 0, 5]
+5	arr[5]=0	[2, 3, 4, 5, 0, 0, 5]
+6	arr[6]=0	[2, 3, 4, 5, 0, 0, 0]
+
+-->Now all zeroes are at the end.
+
+Step 4: Print the array
+for(int i = 0; i < n; i++) cout << arr[i] << " ";
+
+Output:
+2 3 4 5 0 0 0
+
+The order of non-zero elements is preserved.
+All zeros are moved to the end.
+
+Core Idea / Logic Summary-->
+
+Use a pointer pos to track where the next non-zero element should go.
+Move all non-zero elements to the front.
+Fill the rest with zeros.
+This is an in-place O(n) solution with O(1) extra space.
+
+--> Why it’s better than naive approach
+Naive approach: swap every zero with the next non-zero → multiple swaps → slower
+This approach: single pass + minimal operations → very efficient
+
+*/
