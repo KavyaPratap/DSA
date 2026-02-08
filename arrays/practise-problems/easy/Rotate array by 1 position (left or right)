@@ -1,0 +1,20 @@
+/*
+Logic
+Store the first element in a temporary variable.
+Shift all other elements one position to the left.
+Place the first element at the end.
+*/
+#include <iostream>
+using namespace std;
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int temp = arr[0]; // Step 1: store first element
+    for(int i = 0; i < n-1; i++) {
+        arr[i] = arr[i+1]; // Step 2: shift left
+    }
+    arr[n-1] = temp; // Step 3: place first element at end
+    // Print rotated array
+    for(int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+}
