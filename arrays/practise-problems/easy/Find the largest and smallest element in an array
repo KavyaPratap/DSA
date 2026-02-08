@@ -1,0 +1,19 @@
+/*
+
+logic used--> we define min and max as arr[0] and then checking if arr[i] if < min , if yes then min=arr[i], and same for max ie arr[i]>max, if yes then max=arr[i]
+*/
+
+#include <iostream>
+using namespace std;
+int main(){
+    int arr[10]={6,10,23,42,145,82,41,98,76,56};
+    int min=arr[0], max=arr[0];
+    for(int i=0;i<10;i++){
+        if (arr[i]<min)
+            min=arr[i];
+        else if(arr[i]>max)
+            max=arr[i];
+    }
+    cout << "Minimum element=> "<<min<<endl;
+    cout << "Maximum element=> "<<max<<endl;
+}
