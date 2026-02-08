@@ -1,0 +1,48 @@
+/*logic used-->
+An array reversed means:
+1st element ↔ last element, 2nd element ↔ 2nd last element a,nd so on…
+So you don’t need extra memory — just swap elements from the ends moving inward.
+*/
+
+/*IMPORTANT FOR C++
+C does not have references
+C++ does have references (&)
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void swap(int &a, int &b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+ALSO WHY WE USE POINTERS/REFERENCE????
+-->Because if we dont use them, the values swapped are copied, that means they ge swapped inside functoin, but in global scope, nothing happens.
+    Because in swap function, if i remove & then no swapping will take place and no array reversal will be done.
+*/
+
+#include <iostream>
+using namespace std;
+void swap(int &a, int &b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+
+int main(){
+     int arr[10]={6,10,23,42,145,82,41,98,76,56};
+     int right= 9;  //as indexing starts from 0
+     int left=0;
+     while (left<right){
+         swap(arr[left],arr[right]);
+         left++;
+         right--;
+     }
+     for(int i=0;i<10;i++){
+         cout <<arr[i]<<' ';
+     }
+}
+
