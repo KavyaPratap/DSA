@@ -1,0 +1,22 @@
+/*
+Goal: Count how many times a given element appears in the array.
+Logic:
+Initialize a counter to 0.
+Iterate through array.
+If arr[i] == target, increment counter.
+At the end → counter = total occurrences.
+*/
+
+#include <iostream>
+using namespace std;
+int main() {
+    int arr[] = {2, 3, 2, 4, 2, 5};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int target = 2;
+    int count = 0;
+
+    for(int i = 0; i < n; i++){
+        if(arr[i] == target) count++;
+    }
+    cout << "Element " << target << " occurs " << count << " times." << endl;
+}
